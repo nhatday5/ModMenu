@@ -1,3 +1,4 @@
+#include "panel.h"
 //
 // Created by reveny on 21/08/2023.
 //

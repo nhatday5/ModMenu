@@ -1,0 +1,21 @@
+name: Build Mod Menu SO
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup NDK
+      uses: nttld/setup-ndk@v1
+      with:
+        ndk-version: r25c
+        add-to-path: true
+    - name: Build with ndk-build
+      run: |
+        cd app/src/main/jni
+        ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=Build/Android.mk NDK_APPLICATION_MK=Build/Application.mk
+    - name: Upload SO file
+      uses: actions/upload-artifact@v3
+      with:
+        name: ModMenu-SO
+        path: app/src/main/jni/libs/

@@ -44,6 +44,12 @@ LOCAL_SRC_FILES := ../Main/Main.cpp \
 
 LOCAL_LDLIBS := -llog -landroid -lz -lEGL -lGLESv3 -lGLESv2
 
+
+
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../Loader/frida-core-devkit/include
+LOCAL_LDLIBS += -L$(LOCAL_PATH)/../Loader/frida-core-devkit/lib -lfrida-core
+LOCAL_SRC_FILES += ../Loader/frida_bridge.cpp ../Loader/engine_manager.cpp ../Loader/panel.cpp ../Loader/modules/cocos_module.cpp ../Loader/modules/unity_module.cpp ../Loader/modules/ue4_module.cpp ../Loader/modules/native_module.cpp
+
 include $(BUILD_SHARED_LIBRARY)
 
 # Loader
@@ -59,5 +65,11 @@ LOCAL_ARM_MODE := arm
 
 LOCAL_SRC_FILES := ../Loader/Loader.cpp \
 LOCAL_LDLIBS := -llog -landroid
+
+
+
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../Loader/frida-core-devkit/include
+LOCAL_LDLIBS += -L$(LOCAL_PATH)/../Loader/frida-core-devkit/lib -lfrida-core
+LOCAL_SRC_FILES += ../Loader/frida_bridge.cpp ../Loader/engine_manager.cpp ../Loader/panel.cpp ../Loader/modules/cocos_module.cpp ../Loader/modules/unity_module.cpp ../Loader/modules/ue4_module.cpp ../Loader/modules/native_module.cpp
 
 include $(BUILD_SHARED_LIBRARY)
